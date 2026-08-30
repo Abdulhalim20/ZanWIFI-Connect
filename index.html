@@ -1,136 +1,149 @@
 <!DOCTYPE html>
 <html lang="sw">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zanwifi Portal - Sign In / Sign Up</title>
-    <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-        body { background: linear-gradient(135deg, #007bff, #00d4ff); height: 100vh; display: flex; justify-content: center; align-items: center; padding: 20px; }
-        .container { background: #ffffff; padding: 30px; border-radius: 12px; box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2); width: 100%; max-width: 400px; text-align: center; }
-        h2 { color: #333; margin-bottom: 10px; font-size: 24px; }
-        p { color: #666; font-size: 14px; margin-bottom: 20px; }
-        .form-group { margin-bottom: 15px; text-align: left; }
-        label { display: block; margin-bottom: 6px; color: #444; font-weight: 600; font-size: 13px; }
-        input { width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 8px; font-size: 15px; outline: none; }
-        input:focus { border-color: #007bff; }
-        button { width: 100%; padding: 12px; background: #007bff; border: none; border-radius: 8px; color: white; font-size: 15px; font-weight: bold; cursor: pointer; transition: background 0.3s; margin-top: 5px; }
-        button:hover { background: #0056b3; }
-        .switch-text { margin-top: 15px; font-size: 14px; color: #666; }
-        .switch-text span { color: #007bff; cursor: pointer; font-weight: bold; }
-        .hidden { display: none; }
-        #response-message { margin-top: 15px; font-size: 14px; font-weight: 600; }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ZanWIFI Connect — Dashboard</title>
+<style>
+:root{--blue:#0757d9;--blue2:#0b78ff;--gold:#f5b400;--bg:#f4f7fb;--card:#fff;--text:#172033;--muted:#718096;--line:#e6ebf2;--danger:#e53935;--ok:#12a150}
+*{box-sizing:border-box}body{margin:0;font-family:Inter,Segoe UI,Arial,sans-serif;background:var(--bg);color:var(--text)}
+.app{display:flex;min-height:100vh}.sidebar{width:255px;background:linear-gradient(180deg,#062c73,#0757d9);color:#fff;padding:22px 15px;position:fixed;left:0;top:0;bottom:0;z-index:10}
+.logo{display:flex;align-items:center;gap:10px;padding:8px 10px 24px;font-weight:800;font-size:20px}.logoMark{width:42px;height:42px;border-radius:50%;background:#fff;color:var(--blue);display:grid;place-items:center;font-weight:900}
+.nav button{width:100%;border:0;background:transparent;color:#dce9ff;text-align:left;padding:12px 13px;border-radius:10px;margin:3px 0;font-size:14px;cursor:pointer}.nav button:hover,.nav button.active{background:rgba(255,255,255,.16);color:#fff}
+.main{margin-left:255px;flex:1}.top{height:72px;background:#fff;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 28px;position:sticky;top:0;z-index:5}.top h1{font-size:21px;margin:0}.admin{font-size:13px;color:var(--muted)}.content{padding:25px 28px}
+.page{display:none}.page.active{display:block}.grid{display:grid;gap:16px}.stats{grid-template-columns:repeat(4,minmax(0,1fr))}.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:19px;box-shadow:0 5px 20px rgba(25,45,80,.04)}.stat{display:flex;justify-content:space-between;align-items:center}.stat .num{font-size:27px;font-weight:800;margin-top:5px}.label{font-size:13px;color:var(--muted)}.icon{width:46px;height:46px;border-radius:12px;background:#eaf2ff;color:var(--blue);display:grid;place-items:center;font-size:21px}
+.sectionTitle{display:flex;align-items:center;justify-content:space-between;margin:25px 0 12px}.sectionTitle h2{font-size:17px;margin:0}.btn{border:0;border-radius:9px;padding:10px 14px;background:var(--blue);color:#fff;cursor:pointer;font-weight:700}.btn.gold{background:var(--gold);color:#16213a}.btn.gray{background:#eef2f7;color:#334155}.actions{display:flex;gap:8px;flex-wrap:wrap}
+table{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden}th,td{padding:12px 13px;border-bottom:1px solid var(--line);font-size:13px;text-align:left}th{background:#f7f9fc;color:#536174}tr:last-child td{border-bottom:0}.badge{display:inline-block;padding:5px 9px;border-radius:999px;font-size:11px;font-weight:800;background:#edf2f7}.badge.ok{background:#e6f8ef;color:#087a3e}.badge.warn{background:#fff5d8;color:#9a6900}.badge.danger{background:#ffe8e8;color:#b42318}
+.toolbar{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px}.search{flex:1;min-width:200px;padding:11px 13px;border:1px solid var(--line);border-radius:9px;outline:none}.two{grid-template-columns:1.3fr .7fr}.chart{height:260px;display:flex;align-items:flex-end;gap:14px;padding:15px 10px 5px}.barWrap{flex:1;height:100%;display:flex;align-items:flex-end;justify-content:center;position:relative}.bar{width:70%;max-width:60px;background:linear-gradient(180deg,var(--blue2),var(--blue));border-radius:8px 8px 2px 2px;min-height:8px}.barVal{position:absolute;bottom:calc(var(--h) + 7px);font-size:11px;color:#4a5568}.barLbl{position:absolute;bottom:-20px;font-size:11px;color:var(--muted)}
+.productGrid{grid-template-columns:repeat(3,minmax(0,1fr))}.product h3{margin:7px 0;font-size:15px}.price{font-weight:900;font-size:20px;color:var(--blue)}.stock{margin-top:8px;font-size:12px}
+.notice{padding:14px;border-radius:10px;background:#fff9e8;border:1px solid #f7df9a;color:#765500;font-size:13px}
+@media(max-width:900px){.sidebar{width:75px}.logo span,.nav button span{display:none}.main{margin-left:75px}.stats,.productGrid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.sidebar{display:none}.main{margin-left:0}.stats,.productGrid,.two{grid-template-columns:1fr}.content{padding:18px}.top{padding:0 18px}}
+</style>
 </head>
 <body>
+<div class="app">
+<aside class="sidebar">
+ <div class="logo"><div class="logoMark">Z</div><span>ZanWIFI Connect</span></div>
+ <nav class="nav">
+  <button class="active" data-page="dashboard">📊 <span>Dashboard</span></button>
+  <button data-page="customers">👥 <span>Wateja</span></button>
+  <button data-page="packages">📶 <span>Vifurushi</span></button>
+  <button data-page="devices">📡 <span>Vifaa / Routers</span></button>
+  <button data-page="hotspot">🔥 <span>Hotspot Business</span></button>
+  <button data-page="invoices">🧾 <span>Invoices</span></button>
+  <button data-page="purchases">🛒 <span>Manunuzi</span></button>
+  <button data-page="deliveries">🚚 <span>Delivery</span></button>
+  <button data-page="expenses">💰 <span>Matumizi</span></button>
+ </nav>
+</aside>
+<main class="main">
+<header class="top"><h1 id="pageTitle">Dashboard</h1><div class="admin">ZanWIFI Connect • Admin</div></header>
+<div class="content">
 
-    <div class="container">
-        <!-- Fomu ya Kuingia (Sign In) -->
-        <div id="signin-section">
-            <h2>Karibu Zanwifi</h2>
-            <p>Ingia ili uendelee kutumia intaneti.</p>
-            <form id="signin-form">
-                <div class="form-group">
-                    <label>Namba ya Simu</label>
-                    <input type="text" id="signin-phone" placeholder="Mfano: 0777XXXXXX" required>
-                </div>
-                <div class="form-group">
-                    <label>Nenosiri (Password)</label>
-                    <input type="password" id="signin-password" placeholder="Weka nenosiri lako" required>
-                </div>
-                <button type="submit">Ingia (Sign In)</button>
-            </form>
-            <div class="switch-text">Haujaandikishwa? <span onclick="toggleForm('signup')">Jisajili hapa</span></div>
-        </div>
+<section id="dashboard" class="page active">
+ <div class="grid stats" id="stats"></div>
+ <div class="grid two">
+  <div class="card"><div class="sectionTitle"><h2>Vifurushi vya Internet</h2></div><div id="packageSummary"></div></div>
+  <div class="card"><div class="sectionTitle"><h2>Muhtasari wa Stock</h2></div><div id="stockSummary"></div></div>
+ </div>
+ <div class="sectionTitle"><h2>Mapato / Invoices</h2><button class="btn gold" onclick="showPage('invoices')">Tazama zote</button></div>
+ <div class="card"><div id="invoiceChart" class="chart"></div></div>
+</section>
 
-        <!-- Fomu ya Kujisajili (Sign Up) -->
-        <div id="signup-section" class="hidden">
-            <h2>Fungua Akaunti</h2>
-            <p>Jisajili ili uweze kupata huduma ya Zanwifi.</p>
-            <form id="signup-form">
-                <div class="form-group">
-                    <label>Namba ya Simu</label>
-                    <input type="text" id="signup-phone" placeholder="Mfano: 0777XXXXXX" required>
-                </div>
-                <div class="form-group">
-                    <label>Nenosiri (Password)</label>
-                    <input type="password" id="signup-password" placeholder="Tengeneza nenosiri" required>
-                </div>
-                <button type="submit">Jisajili (Sign Up)</button>
-            </form>
-            <div class="switch-text">Una akaunti tayari? <span onclick="toggleForm('signin')">Ingia hapa</span></div>
-        </div>
+<section id="customers" class="page">
+ <div class="sectionTitle"><h2>Wateja</h2><button class="btn" onclick="alert('Fomu ya kuongeza mteja inaweza kuongezwa hapa.')">+ Mteja Mpya</button></div>
+ <div class="card"><div class="toolbar"><input class="search" placeholder="Tafuta jina, simu, location..." oninput="filterTable('customerTable',this.value)"></div><div id="customerTable"></div></div>
+</section>
 
-        <div id="response-message"></div>
-    </div>
+<section id="packages" class="page">
+ <div class="sectionTitle"><h2>Vifurushi</h2></div><div class="grid productGrid" id="packageCards"></div>
+</section>
 
-    <script>
-        function toggleForm(type) {
-            const signinSec = document.getElementById('signin-section');
-            const signupSec = document.getElementById('signup-section');
-            document.getElementById('response-message').innerText = '';
+<section id="devices" class="page">
+ <div class="sectionTitle"><h2>Vifaa / Routers</h2></div><div class="grid productGrid" id="deviceCards"></div>
+</section>
 
-            if (type === 'signup') {
-                signinSec.classList.add('hidden');
-                signupSec.classList.remove('hidden');
-            } else {
-                signupSec.classList.add('hidden');
-                signinSec.classList.remove('hidden');
-            }
-        }
+<section id="hotspot" class="page">
+ <div class="sectionTitle"><h2>Hotspot Business</h2></div><div class="card" id="hotspotTable"></div>
+</section>
 
-        // Kushughulikia Sign In
-        document.getElementById('signin-form').addEventListener('submit', async function(e) {
-            e.preventDefault();
-            const phone = document.getElementById('signin-phone').value;
-            const password = document.getElementById('signin-password').value;
-            const msg = document.getElementById('response-message');
+<section id="invoices" class="page">
+ <div class="sectionTitle"><h2>Invoices</h2></div><div class="card"><div class="toolbar"><input class="search" placeholder="Tafuta invoice au mteja..." oninput="filterTable('invoiceTable',this.value)"></div><div id="invoiceTable"></div></div>
+</section>
 
-            msg.style.color = '#007bff'; 
-            msg.innerText = 'Inathibitisha...';
+<section id="purchases" class="page"><div class="sectionTitle"><h2>Manunuzi</h2></div><div class="card" id="purchaseTable"></div></section>
+<section id="deliveries" class="page"><div class="sectionTitle"><h2>Delivery Reports</h2></div><div class="card" id="deliveryTable"></div></section>
+<section id="expenses" class="page"><div class="sectionTitle"><h2>Matumizi / Expenses</h2></div><div class="card" id="expenseTable"></div></section>
 
-            try {
-                const res = await fetch('/api/signin', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ phone, password })
-                });
-                const data = await res.json();
-                msg.style.color = data.success ? 'green' : 'red';
-                msg.innerText = data.message;
-            } catch (err) {
-                msg.style.color = 'red'; 
-                msg.innerText = 'Hitilafu ya mtandao.';
-            }
-        });
+</div></main></div>
 
-        // Kushughulikia Sign Up
-        document.getElementById('signup-form').addEventListener('submit', async function(e) {
-            e.preventDefault();
-            const phone = document.getElementById('signup-phone').value;
-            const password = document.getElementById('signup-password').value;
-            const msg = document.getElementById('response-message');
+<script>
+const DATA = {"customers": [{"customer_id": "3", "full_name": "CHUO CHA MAFUNZO K/NO1", "phone_number": "----", "address": "kilimani", "created_at": "2026-08-05 09:32:42", "account_no": "255743602579", "device_number": "255749640589", "package_type": "Vodacom", "start_date": "2026-08-05", "end_date": "2026-09-04"}, {"customer_id": "6", "full_name": "OMMY", "phone_number": "---", "address": "kilimani", "created_at": "2026-08-06 09:43:45", "account_no": "255770190471", "device_number": "255770190471", "package_type": "Zantel / Tigo", "start_date": "0000-00-00", "end_date": "0000-00-00"}, {"customer_id": "7", "full_name": "JUMA KONDO IBRAHIM", "phone_number": "0777470291", "address": "KWA ALINATO", "created_at": "2026-08-17 05:04:49", "account_no": "0703766458", "device_number": "0703766458", "package_type": "Zantel / Tigo", "start_date": "2026-08-17", "end_date": "2026-09-17"}, {"customer_id": "8", "full_name": "ADHERA SEIF SAID", "phone_number": "0779665011", "address": "MWERA MELI  6", "created_at": "2026-08-17 05:06:04", "account_no": "0703678517", "device_number": "0703678517", "package_type": "Zantel / Tigo", "start_date": "2026-08-17", "end_date": "2026-09-17"}, {"customer_id": "9", "full_name": "KHALID MASOUD ABDALLA", "phone_number": "0657100015", "address": "PEMBA", "created_at": "2026-08-17 05:09:11", "account_no": "0677079480", "device_number": "0677079480", "package_type": "Zantel / Tigo", "start_date": "2026-08-17", "end_date": "2026-09-17"}, {"customer_id": "10", "full_name": "HALIMA HAMAD SULEIMAN", "phone_number": "0671493182", "address": "MAUNGANI", "created_at": "2026-08-17 11:18:25", "account_no": "0705465105", "device_number": "0705465105", "package_type": "Zantel / Tigo", "start_date": "0000-00-00", "end_date": "0000-00-00"}], "devices": [{"device_id": "1", "device_type": "Router", "brand_model": "Cudy N400", "price": "145000.00", "stock_quantity": "0", "status": "Out of Stock", "image": "device_1785918067.webp"}, {"device_id": "2", "device_type": "Router", "brand_model": "Olax", "price": "110000.00", "stock_quantity": "2", "status": "In Stock", "image": "device_1785918292.png"}, {"device_id": "3", "device_type": "Router", "brand_model": "OLAX M100 4G/5G Pocket Router with Wi-Fi 6", "price": "120000.00", "stock_quantity": "0", "status": "Out of Stock", "image": "device_1785918672.webp"}, {"device_id": "4", "device_type": "Router", "brand_model": "ZTE K12", "price": "145000.00", "stock_quantity": "0", "status": "Out of Stock", "image": "device_1786596027.jpg"}, {"device_id": "5", "device_type": "Router", "brand_model": "portable 4G", "price": "60000.00", "stock_quantity": "3", "status": "In Stock", "image": "device_1786599855.webp"}], "packages": [{"package_id": "1", "provider": "Yas", "package_name": "10Mbps", "price": "70000.00", "duration": "Siku 30"}, {"package_id": "2", "provider": "Vodacom", "package_name": "10Mbps", "price": "70000.00", "duration": "Siku 30"}, {"package_id": "3", "provider": "Yas", "package_name": "20Mbps", "price": "100000.00", "duration": "Siku 30"}], "invoices": [{"id": "10", "invoice_number": "INV-20260818-48C0E", "client_name": "ADHERA SEIF SAID", "client_phone": "N/A", "client_email": "N/A", "client_location": "MWERA MELI  6", "service_name": "YAS Plan", "speed_mbps": "10 Mbps", "router_model": "Router", "amount": "160000.00", "payment_status": "paid", "payment_type": "manual", "invoice_date": "2026-08-17", "created_at": "2026-08-18 08:49:29"}, {"id": "11", "invoice_number": "INV-20260818-528C2", "client_name": "JUMA KONDO IBRAHIM", "client_phone": "N/A", "client_email": "N/A", "client_location": "KWA ALINATO", "service_name": "YAS Plan", "speed_mbps": "10 Mbps", "router_model": "Kifurushi", "amount": "70000.00", "payment_status": "paid", "payment_type": "manual", "invoice_date": "2026-08-17", "created_at": "2026-08-18 09:01:27"}, {"id": "12", "invoice_number": "INV-20260818-27744", "client_name": "KHALID MASOUD ABDALLA", "client_phone": "N/A", "client_email": "N/A", "client_location": "PEMBA", "service_name": "YAS Plan", "speed_mbps": "100 Mbps", "router_model": "Router, Hotspot Business, MikroTik Router, Kifurushi", "amount": "620000.00", "payment_status": "paid", "payment_type": "manual", "invoice_date": "2026-08-17", "created_at": "2026-08-18 09:03:42"}], "purchases": [{"purchase_id": "1", "customer_name": "ABDULKADIR MOHAMED", "item_name": "kifurushi", "quantity": "1", "total_price": "70000.00", "payment_method": "TigoPesa", "purchase_date": "2026-08-05 10:01:01", "unit_price": "0.00", "purchased_by": ""}, {"purchase_id": "2", "customer_name": "", "item_name": "kifurushi", "quantity": "1", "total_price": "70000.00", "payment_method": "", "purchase_date": "2026-08-04 21:00:00", "unit_price": "70000.00", "purchased_by": "ABDULKADIR MOHAMED"}, {"purchase_id": "3", "customer_name": "", "item_name": "ZTE K12", "quantity": "1", "total_price": "130000.00", "payment_method": "", "purchase_date": "2026-08-14 21:00:00", "unit_price": "130000.00", "purchased_by": "PEMBA"}], "hotspot_clients": [{"id": "1", "client_name": "Hope Happy", "phone": "0777223183", "location": "kazole matetema", "router_model": "Mikrotik", "installation_date": "2026-08-06", "status": "Active"}], "delivery_reports": [{"id": "2", "tracking_no": "", "tracking_code": null, "customer_name": "khalid", "item_name": "YAS 5G", "phone_number": "0657100015", "item_description": "", "destination": "", "courier_person": "", "delivery_status": "Delivered", "location": "Wete", "delivery_date": "2026-08-14", "notes": null, "status": "Imewasilishwa", "created_at": "2026-08-14 11:13:21"}], "expenses": [{"id": "1", "title": "OLAX  PORTABLE", "category": "Vifaa & Zana", "amount": "180000.00", "date": "2026-08-17", "description": "", "created_at": "2026-08-18 07:03:17"}]};
 
-            msg.style.color = '#007bff'; 
-            msg.innerText = 'Inasajili...';
+const money = n => new Intl.NumberFormat('sw-TZ').format(Number(n||0)) + ' TZS';
+const esc = s => String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]));
 
-            try {
-                const res = await fetch('/api/signup', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ phone, password })
-                });
-                const data = await res.json();
-                msg.style.color = data.success ? 'green' : 'red';
-                msg.innerText = data.message;
-                if (data.success) {
-                    setTimeout(() => toggleForm('signin'), 2000); // Badilisha kwenda Sign In baada ya sekunde 2
-                }
-            } catch (err) {
-                msg.style.color = 'red'; 
-                msg.innerText = 'Hitilafu ya mtandao.';
-            }
-        });
-    </script>
+function table(rows, cols, id){
+ if(!rows.length) return '<div class="notice">Hakuna data iliyopo.</div>';
+ return `<table id="${id||''}"><thead><tr>${cols.map(c=>`<th>${c.label}</th>`).join('')}</tr></thead><tbody>${
+ rows.map(r=>`<tr>${cols.map(c=>`<td>${c.render?c.render(r):esc(r[c.key])}</td>`).join('')}</tr>`).join('')
+ }</tbody></table>`;
+}
+function filterTable(id,q){
+ const t=document.getElementById(id); if(!t)return;
+ [...t.tBodies[0].rows].forEach(r=>r.style.display=r.innerText.toLowerCase().includes(q.toLowerCase())?'':'none');
+}
+function showPage(name){
+ document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+ document.getElementById(name).classList.add('active');
+ document.querySelectorAll('.nav button').forEach(b=>b.classList.toggle('active',b.dataset.page===name));
+ document.getElementById('pageTitle').textContent=document.querySelector(`[data-page="${name}"] span`)?.textContent||'Dashboard';
+ window.scrollTo(0,0);
+}
+document.querySelectorAll('.nav button').forEach(b=>b.onclick=()=>showPage(b.dataset.page));
+
+function render(){
+ const paid=DATA.invoices.filter(x=>String(x.payment_status).toLowerCase()==='paid');
+ const revenue=paid.reduce((s,x)=>s+Number(x.amount||0),0);
+ const stock=DATA.devices.reduce((s,x)=>s+Number(x.stock_quantity||0),0);
+ document.getElementById('stats').innerHTML=[
+  ['👥',DATA.customers.length,'Wateja'],
+  ['📶',DATA.packages.length,'Vifurushi'],
+  ['📡',stock,'Vifaa Stock'],
+  ['💵',money(revenue),'Mapato ya Invoices']
+ ].map(x=>`<div class="card stat"><div><div class="label">${x[2]}</div><div class="num">${x[1]}</div></div><div class="icon">${x[0]}</div></div>`).join('');
+
+ document.getElementById('packageSummary').innerHTML=DATA.packages.map(p=>`<div style="display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--line)"><span><b>${esc(p.provider)}</b> — ${esc(p.package_name)}</span><b>${money(p.price)}</b></div>`).join('')||'<div class="notice">Hakuna vifurushi.</div>';
+
+ document.getElementById('stockSummary').innerHTML=DATA.devices.map(d=>`<div style="padding:10px 0;border-bottom:1px solid var(--line);display:flex;justify-content:space-between"><span>${esc(d.brand_model)}</span><span class="badge ${Number(d.stock_quantity)>0?'ok':'danger'}">${Number(d.stock_quantity)>0?d.stock_quantity+' In Stock':'Out of Stock'}</span></div>`).join('');
+
+ const max=Math.max(1,...paid.map(x=>Number(x.amount||0)));
+ document.getElementById('invoiceChart').innerHTML=paid.slice(-8).map(x=>{let h=Math.max(8,Number(x.amount)/max*210);return `<div class="barWrap" style="--h:${h}px"><span class="barVal">${money(x.amount)}</span><div class="bar" style="height:${h}px"></div><span class="barLbl">${esc(x.invoice_number||'INV')}</span></div>`}).join('')||'<div class="notice">Hakuna invoice za paid.</div>';
+
+ document.getElementById('customerTable').innerHTML=table(DATA.customers,
+ [{label:'ID',key:'customer_id'},{label:'Jina',key:'full_name'},{label:'Simu',key:'phone_number'},{label:'Location',key:'address'},{label:'Package',key:'package_type'},{label:'Mwanzo',key:'start_date'},{label:'Mwisho',key:'end_date'}],'customerTableTable');
+
+ document.getElementById('packageCards').innerHTML=DATA.packages.map(p=>`<div class="card product"><div class="label">${esc(p.provider)}</div><h3>${esc(p.package_name)}</h3><div class="price">${money(p.price)}</div><div class="stock">⏱ ${esc(p.duration)}</div></div>`).join('');
+
+ document.getElementById('deviceCards').innerHTML=DATA.devices.map(d=>`<div class="card product"><div class="label">${esc(d.device_type)}</div><h3>${esc(d.brand_model)}</h3><div class="price">${money(d.price)}</div><div class="stock"><span class="badge ${Number(d.stock_quantity)>0?'ok':'danger'}">${Number(d.stock_quantity)>0?'Stock: '+d.stock_quantity:'Out of Stock'}</span></div></div>`).join('');
+
+ document.getElementById('hotspotTable').innerHTML=table(DATA.hotspot_clients,
+ [{label:'Jina',key:'client_name'},{label:'Simu',key:'phone'},{label:'Location',key:'location'},{label:'Router',key:'router_model'},{label:'Installation',key:'installation_date'},{label:'Status',key:'status',render:r=>`<span class="badge ${r.status==='Active'?'ok':'danger'}">${esc(r.status)}</span>`}]);
+
+ document.getElementById('invoiceTable').innerHTML=table(DATA.invoices,
+ [{label:'Invoice',key:'invoice_number'},{label:'Mteja',key:'client_name'},{label:'Service',key:'service_name'},{label:'Speed',key:'speed_mbps'},{label:'Amount',key:'amount',render:r=>money(r.amount)},{label:'Payment',key:'payment_status',render:r=>`<span class="badge ${String(r.payment_status).toLowerCase()==='paid'?'ok':'warn'}">${esc(r.payment_status)}</span>`},{label:'Date',key:'invoice_date'}],'invoiceTable');
+
+ document.getElementById('purchaseTable').innerHTML=table(DATA.purchases,
+ [{label:'Mteja',key:'customer_name'},{label:'Item',key:'item_name'},{label:'Qty',key:'quantity'},{label:'Total',key:'total_price',render:r=>money(r.total_price)},{label:'Njia',key:'payment_method'},{label:'Tarehe',key:'purchase_date'}]);
+
+ document.getElementById('deliveryTable').innerHTML=table(DATA.delivery_reports,
+ [{label:'Mteja',key:'customer_name'},{label:'Item',key:'item_name'},{label:'Simu',key:'phone_number'},{label:'Destination',key:'destination'},{label:'Location',key:'location'},{label:'Status',key:'delivery_status',render:r=>`<span class="badge ${r.delivery_status==='Delivered'?'ok':'warn'}">${esc(r.delivery_status)}</span>`},{label:'Tarehe',key:'delivery_date'}]);
+
+ document.getElementById('expenseTable').innerHTML=table(DATA.expenses,
+ [{label:'Title',key:'title'},{label:'Category',key:'category'},{label:'Amount',key:'amount',render:r=>money(r.amount)},{label:'Date',key:'date'},{label:'Description',key:'description'}]);
+}
+render();
+</script>
 </body>
 </html>
