@@ -1,149 +1,568 @@
 <!DOCTYPE html>
-<html lang="sw">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ZanWIFI Connect — Dashboard</title>
+<title>ZanWIFI Connect — WiFi Business Platform in Zanzibar & Tanzania</title>
+<meta name="description" content="ZanWIFI Connect helps hostels, hotels, cafés, and businesses across Zanzibar and Tanzania run their own WiFi hotspot business — mobile money billing, MikroTik integration, and a live revenue dashboard.">
+<meta name="google-site-verification" content="HencJ13IbDYBGjv_NktT0jxlPhkLs1m4nlyoXkfWfWw">
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="canonical" href="https://zanwifi-connect.onrender.com/">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="ZanWIFI Connect">
+<meta property="og:url" content="https://zanwifi-connect.onrender.com/">
+<meta property="og:title" content="Run your own WiFi business in Zanzibar — ZanWIFI Connect">
+<meta property="og:description" content="ZanWIFI Connect helps hostels, hotels, cafés, and businesses across Zanzibar and Tanzania run their own WiFi hotspot business — mobile money billing, MikroTik integration, and a live revenue dashboard.">
+<meta property="og:image" content="https://zanwifi-connect.onrender.com/logo-light.png">
+<meta property="og:image:width" content="900">
+<meta property="og:image:height" content="242">
+<meta property="og:locale" content="en_GB">
+<meta property="og:locale:alternate" content="sw_TZ">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Run your own WiFi business in Zanzibar — ZanWIFI Connect">
+<meta name="twitter:description" content="ZanWIFI Connect helps hostels, hotels, cafés, and businesses across Zanzibar and Tanzania run their own WiFi hotspot business — mobile money billing, MikroTik integration, and a live revenue dashboard.">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "ZanWIFI Connect",
+  "url": "https://zanwifi-connect.onrender.com/",
+  "logo": "https://zanwifi-connect.onrender.com/logo-light.png",
+  "description": "ZanWIFI Connect helps hostels, hotels, cafés, and businesses across Zanzibar and Tanzania run their own WiFi hotspot business with mobile money billing and MikroTik integration.",
+  "areaServed": [
+    { "@type": "AdministrativeArea", "name": "Zanzibar" },
+    { "@type": "Country", "name": "Tanzania" }
+  ],
+  "contactPoint": [{
+    "@type": "ContactPoint",
+    "telephone": "+255622948771",
+    "email": "info@zanwificonnect.com",
+    "contactType": "customer support",
+    "availableLanguage": ["en", "sw"]
+  }],
+  "makesOffer": {
+    "@type": "Offer",
+    "itemOffered": {
+      "@type": "SoftwareApplication",
+      "name": "ZanWIFI Portal",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Web",
+      "url": "https://zanwifi-connect-2.onrender.com/"
+    }
+  }
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=IBM+Plex+Sans:wght@400;600&family=IBM+Plex+Mono:wght@600;700&display=swap" rel="stylesheet">
 <style>
-:root{--blue:#0757d9;--blue2:#0b78ff;--gold:#f5b400;--bg:#f4f7fb;--card:#fff;--text:#172033;--muted:#718096;--line:#e6ebf2;--danger:#e53935;--ok:#12a150}
-*{box-sizing:border-box}body{margin:0;font-family:Inter,Segoe UI,Arial,sans-serif;background:var(--bg);color:var(--text)}
-.app{display:flex;min-height:100vh}.sidebar{width:255px;background:linear-gradient(180deg,#062c73,#0757d9);color:#fff;padding:22px 15px;position:fixed;left:0;top:0;bottom:0;z-index:10}
-.logo{display:flex;align-items:center;gap:10px;padding:8px 10px 24px;font-weight:800;font-size:20px}.logoMark{width:42px;height:42px;border-radius:50%;background:#fff;color:var(--blue);display:grid;place-items:center;font-weight:900}
-.nav button{width:100%;border:0;background:transparent;color:#dce9ff;text-align:left;padding:12px 13px;border-radius:10px;margin:3px 0;font-size:14px;cursor:pointer}.nav button:hover,.nav button.active{background:rgba(255,255,255,.16);color:#fff}
-.main{margin-left:255px;flex:1}.top{height:72px;background:#fff;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 28px;position:sticky;top:0;z-index:5}.top h1{font-size:21px;margin:0}.admin{font-size:13px;color:var(--muted)}.content{padding:25px 28px}
-.page{display:none}.page.active{display:block}.grid{display:grid;gap:16px}.stats{grid-template-columns:repeat(4,minmax(0,1fr))}.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:19px;box-shadow:0 5px 20px rgba(25,45,80,.04)}.stat{display:flex;justify-content:space-between;align-items:center}.stat .num{font-size:27px;font-weight:800;margin-top:5px}.label{font-size:13px;color:var(--muted)}.icon{width:46px;height:46px;border-radius:12px;background:#eaf2ff;color:var(--blue);display:grid;place-items:center;font-size:21px}
-.sectionTitle{display:flex;align-items:center;justify-content:space-between;margin:25px 0 12px}.sectionTitle h2{font-size:17px;margin:0}.btn{border:0;border-radius:9px;padding:10px 14px;background:var(--blue);color:#fff;cursor:pointer;font-weight:700}.btn.gold{background:var(--gold);color:#16213a}.btn.gray{background:#eef2f7;color:#334155}.actions{display:flex;gap:8px;flex-wrap:wrap}
-table{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden}th,td{padding:12px 13px;border-bottom:1px solid var(--line);font-size:13px;text-align:left}th{background:#f7f9fc;color:#536174}tr:last-child td{border-bottom:0}.badge{display:inline-block;padding:5px 9px;border-radius:999px;font-size:11px;font-weight:800;background:#edf2f7}.badge.ok{background:#e6f8ef;color:#087a3e}.badge.warn{background:#fff5d8;color:#9a6900}.badge.danger{background:#ffe8e8;color:#b42318}
-.toolbar{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px}.search{flex:1;min-width:200px;padding:11px 13px;border:1px solid var(--line);border-radius:9px;outline:none}.two{grid-template-columns:1.3fr .7fr}.chart{height:260px;display:flex;align-items:flex-end;gap:14px;padding:15px 10px 5px}.barWrap{flex:1;height:100%;display:flex;align-items:flex-end;justify-content:center;position:relative}.bar{width:70%;max-width:60px;background:linear-gradient(180deg,var(--blue2),var(--blue));border-radius:8px 8px 2px 2px;min-height:8px}.barVal{position:absolute;bottom:calc(var(--h) + 7px);font-size:11px;color:#4a5568}.barLbl{position:absolute;bottom:-20px;font-size:11px;color:var(--muted)}
-.productGrid{grid-template-columns:repeat(3,minmax(0,1fr))}.product h3{margin:7px 0;font-size:15px}.price{font-weight:900;font-size:20px;color:var(--blue)}.stock{margin-top:8px;font-size:12px}
-.notice{padding:14px;border-radius:10px;background:#fff9e8;border:1px solid #f7df9a;color:#765500;font-size:13px}
-@media(max-width:900px){.sidebar{width:75px}.logo span,.nav button span{display:none}.main{margin-left:75px}.stats,.productGrid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:600px){.sidebar{display:none}.main{margin-left:0}.stats,.productGrid,.two{grid-template-columns:1fr}.content{padding:18px}.top{padding:0 18px}}
+:root{
+  --night:#0D1B2C; --night-2:#122438; --paper:#FFFFFF; --soft:#F2F6FA;
+  --net:#1D7BFF; --net-deep:#0B5BD3; --amber:#FFB020; --amber-d:#B36A00; --ok:#19B37B;
+  --ink:#13202F; --mut:#5D6E80; --mut-d:#94A9BE; --line:#DCE5EE; --line-d:#24384F;
+  --disp:"Space Grotesk",sans-serif; --body:"IBM Plex Sans",system-ui,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,monospace;
+}
+
+.brands{padding:40px 24px 4px}
+.brands-h{text-align:center;font-size:11.5px;font-weight:800;letter-spacing:.15em;color:var(--mut);margin-bottom:20px}
+.brand-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:10px}
+.bt{display:inline-flex;align-items:center;gap:7px;padding:9px 13px;border:1px solid var(--line);border-radius:12px;background:#fff;transition:border-color .15s,transform .15s,box-shadow .15s}
+.bt:hover{border-color:var(--net);transform:translateY(-2px);box-shadow:0 8px 20px -10px rgba(11,91,211,.45)}
+.bt img{height:21px;width:auto;max-width:118px;object-fit:contain;display:block}
+.bt[data-sq] img{height:26px}
+.bt b{font-size:12px;font-weight:800;color:#0E7C55;line-height:1}
+.bt[data-proven]{border-color:#0E7C55}
+.brands-note{text-align:center;color:var(--mut);font-size:13px;line-height:1.65;margin:18px auto 0;max-width:78ch}
+.brands-note b{color:var(--ink)}
+@media(max-width:640px){
+  .brands{padding:28px 16px 2px}
+  .bt{padding:7px 10px;gap:5px}
+  .bt img{height:17px;max-width:84px}
+  .bt[data-sq] img{height:21px}
+  .brands-note{font-size:12.5px}
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font:16px/1.65 var(--body);color:var(--ink);background:var(--paper)}
+.wrap{max-width:1100px;margin:0 auto;padding:0 22px}
+h1,h2,h3{font-family:var(--disp);line-height:1.12}
+a{color:inherit}
+img{max-width:100%}
+::selection{background:var(--amber);color:var(--night)}
+
+header{position:sticky;top:0;z-index:40;background:rgba(13,27,44,.92);backdrop-filter:blur(8px);
+border-bottom:1px solid var(--line-d)}
+header .wrap{display:flex;align-items:center;gap:12px;height:62px}
+.logo{display:flex;align-items:center;gap:10px;color:#fff;text-decoration:none;font-weight:700;font-family:var(--disp)}
+nav{margin-left:auto;display:flex;gap:20px;align-items:center}
+nav a{color:var(--mut-d);text-decoration:none;font-size:14px;font-weight:600;white-space:nowrap}
+nav a:hover{color:#fff}
+nav a.cta{background:var(--net);color:#fff;padding:9px 16px;border-radius:9px}
+nav a.cta:hover{background:var(--net-deep)}
+nav a.cta.ghost{background:transparent;border:1px solid var(--line-d);padding:8px 15px}
+nav a.cta.ghost:hover{border-color:var(--mut-d)}
+#menuBtn{display:none;margin-left:auto;background:none;border:none;color:#fff;font-size:24px;cursor:pointer;padding:4px 8px}
+.auth-m{display:none;margin-left:auto;align-items:center;gap:8px}
+.auth-m a{font-size:13px;font-weight:700;text-decoration:none;white-space:nowrap;padding:8px 12px;border-radius:9px}
+.auth-m a.in{color:#fff;border:1px solid var(--line-d)}
+.auth-m a.in:hover{border-color:var(--mut-d)}
+.auth-m a.up{background:var(--net);color:#fff}
+.auth-m a.up:hover{background:var(--net-deep)}
+@media(max-width:900px){
+  nav{position:fixed;inset:62px 0 0 0;background:var(--night);flex-direction:column;align-items:flex-start;
+    padding:22px;gap:16px;display:none;overflow-y:auto}
+  nav.open{display:flex}
+  nav a.cta{display:none}
+  .auth-m{display:flex}
+  #menuBtn{display:block;margin-left:4px}
+}
+
+@media(max-width:400px){
+  .auth-m a{padding:7px 10px;font-size:12.5px}
+  .auth-m{gap:6px}
+  header .wrap{gap:8px}
+}
+
+.hero{background:
+  radial-gradient(700px 340px at 85% -60px, rgba(29,123,255,.28), transparent 60%),
+  radial-gradient(500px 300px at -60px 110%, rgba(255,176,32,.14), transparent 60%),
+  var(--night);
+color:#fff;padding:64px 0 80px;overflow:hidden}
+.hero .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center}
+@media(max-width:840px){.hero .wrap{grid-template-columns:1fr;gap:40px}}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font:600 12px/1 var(--mono);
+letter-spacing:2px;text-transform:uppercase;color:var(--amber);margin-bottom:18px}
+.eyebrow::before{content:"";width:26px;height:2px;background:var(--amber)}
+.hero .promise{border-left:2px solid var(--amber);padding-left:12px;margin-top:20px;
+  font-size:13.5px;line-height:1.55;color:rgba(255,255,255,.86);max-width:54ch}
+.hero .promise b{color:#fff;font-weight:700}
+.trust-pills{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.trust-pills span{display:inline-flex;align-items:center;gap:7px;font-size:13px;color:var(--mut-d)}
+.hero h1{font-size:clamp(30px,4.6vw,48px);font-weight:700;letter-spacing:-.5px}
+.hero h1 .u{color:var(--amber)}
+.hero p.lead{margin:20px 0 28px;font-size:17.5px;color:var(--mut-d);max-width:480px}
+.hero .acts{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.btn{display:inline-block;font:600 15.5px var(--body);text-decoration:none;border-radius:11px;
+padding:13px 22px;transition:transform .12s ease, background .12s ease;border:none;cursor:pointer}
+.btn.pri{background:var(--net);color:#fff}
+.btn.pri:hover{background:var(--net-deep);transform:translateY(-1px)}
+.btn.amber{background:var(--amber);color:var(--night)}
+.btn.amber:hover{filter:brightness(1.08);transform:translateY(-1px)}
+.btn.sec{border:1px solid var(--line-d);color:#fff;background:transparent}
+.btn.sec:hover{border-color:var(--mut-d)}
+.hero .tagline{margin-top:28px;font:600 13px var(--mono);letter-spacing:1px;color:var(--amber)}
+
+.stage{position:relative;display:flex;justify-content:center;padding:20px 0}
+.stage .mockup{width:min(360px,100%);opacity:0;transform:translateY(16px);animation:rise .6s ease .15s forwards}
+@keyframes rise{to{opacity:1;transform:translateY(0)}}
+.live-tag{display:inline-flex;align-items:center;gap:6px;font:700 10px var(--mono);letter-spacing:1px;
+text-transform:uppercase;color:var(--ok)}
+.live-dot{width:7px;height:7px;border-radius:50%;background:var(--ok);animation:pulse 1.8s ease-in-out infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(25,179,123,.55)}50%{box-shadow:0 0 0 6px rgba(25,179,123,0)}}
+.bars{display:flex;align-items:flex-end;gap:6px;height:40px;margin:4px 0 14px}
+.bars i{flex:1;background:linear-gradient(180deg,var(--net),var(--net-deep));border-radius:4px 4px 0 0;
+height:0;animation:grow 1s ease forwards}
+.bars i:nth-child(1){animation-delay:.3s}.bars i:nth-child(2){animation-delay:.4s}
+.bars i:nth-child(3){animation-delay:.5s}.bars i:nth-child(4){animation-delay:.6s}
+.bars i:nth-child(5){animation-delay:.7s}.bars i:nth-child(6){animation-delay:.8s}
+.bars i:nth-child(7){animation-delay:.9s}
+@keyframes grow{to{height:var(--h)}}
+
+section{padding:72px 0}
+.gray{background:var(--soft)}
+.sec-eyebrow{font:600 12px var(--mono);letter-spacing:2px;text-transform:uppercase;color:var(--net-deep)}
+.sec-eyebrow.amber-eyebrow{color:var(--amber-d)}
+.sec-h{font-size:clamp(24px,3.4vw,34px);margin:10px 0 14px;letter-spacing:-.4px}
+.sec-p{color:var(--mut);max-width:600px}
+.center{text-align:center;margin-left:auto;margin-right:auto}
+
+.features{margin-top:34px;display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px}
+.feature{background:#fff;color:var(--ink);border:1px solid var(--line);border-radius:12px;padding:16px;font-size:14px;
+font-weight:600;display:flex;align-items:center;gap:10px;box-shadow:0 10px 24px -14px rgba(0,0,0,.4);
+transition:transform .14s ease}
+.feature:hover{transform:translateY(-2px)}
+.feature .ic{width:30px;height:30px;border-radius:8px;background:rgba(255,176,32,.15);color:var(--amber-d);
+display:flex;align-items:center;justify-content:center;flex:none;font-size:15px}
+
+.mockup{background:var(--night-2);border:1px solid var(--line-d);border-radius:16px;padding:20px;color:#fff;
+box-shadow:0 30px 60px -20px rgba(0,0,0,.5)}
+.mockup .mh{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
+.mockup .mh b{font-family:var(--disp);font-size:14px;letter-spacing:.5px}
+.mockup .mcards{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px}
+.mockup .mcard{background:rgba(255,255,255,.06);border-radius:10px;padding:12px}
+.mockup .mcard .k{font-size:10px;color:var(--mut-d);text-transform:uppercase;letter-spacing:.5px}
+.mockup .mcard .v{font-family:var(--mono);font-size:18px;font-weight:700;margin-top:3px}
+.mockup .mrow{display:flex;justify-content:space-between;font-size:12px;color:var(--mut-d);
+padding:8px 0;border-top:1px solid var(--line-d)}
+.mockup .mrow b{color:#fff;font-weight:600}
+
+.migrate{margin-top:34px;display:grid;grid-template-columns:1.1fr .9fr;gap:30px;align-items:center}
+@media(max-width:840px){.migrate{grid-template-columns:1fr}}
+.migrate ul{margin-top:14px;list-style:none}
+.migrate li{padding:7px 0 7px 26px;position:relative;font-size:14.5px;color:var(--ink)}
+.migrate li::before{content:"✓";position:absolute;left:0;color:var(--ok);font-weight:700}
+.migrate .free{display:inline-flex;gap:8px;margin-top:16px}
+.migrate .free span{font:700 12px var(--mono);color:var(--net-deep);background:rgba(29,123,255,.08);
+padding:6px 12px;border-radius:20px}
+
+.pay-dark{background:linear-gradient(160deg,var(--night) 0%,var(--night-2) 100%);color:#fff;
+position:relative;overflow:hidden}
+.pay-dark::before{content:"";position:absolute;inset:0;
+background:radial-gradient(600px 300px at 90% 0%, rgba(255,176,32,.12), transparent 60%);pointer-events:none}
+.pay-dark>.wrap{position:relative;z-index:1}
+.pay-dark .sec-eyebrow.amber-eyebrow{color:var(--amber)}
+.pay-dark .sec-h{color:#fff}
+.pay-dark .sec-p{color:var(--mut-d)}
+.pay-dark .migrate li{color:#fff}
+.pay-dark .migrate .free span{color:var(--amber);background:rgba(255,176,32,.14)}
+
+.trust-box{margin-top:34px;background:rgba(255,176,32,.1);border:1px solid rgba(255,176,32,.3);border-radius:14px;padding:22px 24px}
+.trust-box .tb-head{display:flex;align-items:flex-start;gap:12px}
+.trust-box .tb-ic{font-size:20px;flex:none;margin-top:2px}
+.trust-box h3{font-size:16px;color:var(--amber);margin-bottom:6px}
+.trust-box p{color:var(--mut-d);font-size:13.5px;line-height:1.6;margin:0}
+.onboard{margin-top:30px;display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px}
+.onboard .ob{background:rgba(255,255,255,.05);border:1px solid var(--line-d);border-radius:12px;padding:16px}
+.onboard .ob .top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px}
+.onboard .ob .ic{font-size:20px}
+.onboard .ob .req{font:700 10px var(--mono);letter-spacing:1px;text-transform:uppercase;padding:2px 8px;border-radius:10px}
+.onboard .ob .req.r1{background:rgba(255,92,92,.15);color:#FF9B9B}
+.onboard .ob .req.r2{background:rgba(255,176,32,.15);color:var(--amber)}
+.onboard .ob .req.r3{background:rgba(255,255,255,.08);color:var(--mut-d)}
+.onboard .ob h4{font-size:14px;margin-bottom:4px;color:#fff}
+.onboard .ob p{font-size:12px;color:var(--mut-d);margin:0;line-height:1.5}
+
+.dash-frame{margin-top:40px;background:#0B1622;border:1px solid var(--line-d);border-radius:16px;
+overflow:hidden;box-shadow:0 30px 70px -20px rgba(0,0,0,.6)}
+.df-bar{padding:10px 14px;display:flex;gap:6px;border-bottom:1px solid var(--line-d)}
+.df-bar span{width:9px;height:9px;border-radius:50%;background:#24384F}
+.df-body{display:flex;min-height:220px}
+.df-side{width:46px;background:#0D1A28;border-right:1px solid var(--line-d);
+display:flex;flex-direction:column;align-items:center;gap:14px;padding:18px 0}
+.df-dot{width:9px;height:9px;border-radius:50%;background:#2C4258}
+.df-dot.on{background:var(--net)}
+.df-main{flex:1;padding:20px}
+.df-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px;margin-bottom:14px}
+.df-card{background:#121F30;border-left:3px solid var(--net);border-radius:8px;padding:10px 12px}
+.df-card.a{border-left-color:var(--amber)} .df-card.g{border-left-color:var(--ok)}
+.df-card span{display:block;font-size:9.5px;color:var(--mut-d);text-transform:uppercase;letter-spacing:.5px}
+.df-card b{display:block;font-family:var(--mono);font-size:14px;color:#fff;margin-top:3px}
+.df-row{display:flex;justify-content:space-between;font-size:12.5px;color:var(--mut-d);
+padding:9px 0;border-top:1px solid var(--line-d)}
+.df-row b{color:var(--ok);font-weight:600}
+@media(max-width:520px){.df-side{display:none}}
+
+.serve{margin-top:36px;display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px}
+.serve .card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:18px 14px;text-align:center}
+.serve .card .ic{font-size:26px;margin-bottom:8px}
+.serve .card .lb{font-size:13.5px;font-weight:600}
+
+.pplans{margin-top:36px;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px}
+.pplan{border:1px solid var(--line);border-radius:14px;padding:22px 18px;text-align:center;background:#fff;position:relative}
+.pplan .nm{font:600 12px var(--mono);letter-spacing:2px;text-transform:uppercase;color:var(--mut)}
+.pplan .pz{font-family:var(--disp);font-weight:700;font-size:26px;margin:8px 0;color:var(--night)}
+.pplan .ds{border-top:2px dashed var(--line);margin-top:14px;padding-top:10px;font-size:13px;color:var(--mut)}
+.pplan.hot{border-color:var(--net)}
+.pplan.hot .flag{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--net);color:#fff;
+font:700 10px var(--mono);letter-spacing:1.5px;padding:4px 10px;border-radius:8px;white-space:nowrap}
+.pp-feats{list-style:none;text-align:left;margin-top:14px;border-top:1px solid var(--line);padding-top:12px}
+.pp-feats li{padding:5px 0 5px 22px;position:relative;font-size:12.5px;color:var(--ink)}
+.pp-feats li::before{content:"✓";position:absolute;left:0;color:var(--ok);font-weight:700}
+.pbadges{margin-top:24px;display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
+.pbadges span{background:var(--soft);border-radius:20px;padding:7px 16px;font-size:13px;font-weight:600;color:var(--net-deep)}
+
+.about-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:40px;align-items:center}
+@media(max-width:840px){.about-grid{grid-template-columns:1fr}}
+.about-card{background:var(--soft);border-radius:16px;padding:24px}
+.about-card .row{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--line);font-size:14px}
+.about-card .row:last-child{border-bottom:none}
+.about-card .row b{font-family:var(--mono)}
+
+details{border-bottom:1px solid var(--line);padding:18px 0}
+details summary{cursor:pointer;font-weight:600;font-family:var(--disp);font-size:17px;list-style:none;
+display:flex;align-items:center;gap:12px}
+details summary::after{content:"+";font:700 22px var(--mono);color:var(--net);margin-left:auto}
+details[open] summary::after{content:"–"}
+details p{margin-top:10px;color:var(--mut);max-width:640px;padding-left:34px}
+.q-ic{flex:none;width:22px;height:22px;border-radius:50%;background:rgba(29,123,255,.12);color:var(--net-deep);
+font-family:var(--mono);font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center}
+
+.band{background:var(--night);color:#fff;border-radius:20px;padding:44px 38px;
+display:flex;gap:22px;align-items:center;flex-wrap:wrap;
+background-image:radial-gradient(420px 200px at 90% 0, rgba(29,123,255,.3), transparent 60%)}
+.band h2{font-size:clamp(22px,3vw,30px)}
+.band p{color:var(--mut-d);margin-top:6px}
+.band .acts{margin-left:auto;display:flex;gap:10px;flex-wrap:wrap}
+@media(max-width:700px){.band .acts{margin-left:0}}
+footer{background:var(--night);color:var(--mut-d);margin-top:70px;padding:44px 0 28px;font-size:14px}
+.fgrid{display:grid;grid-template-columns:1.4fr repeat(3,1fr);gap:28px;padding-bottom:30px;border-bottom:1px solid var(--line-d)}
+@media(max-width:760px){.fgrid{grid-template-columns:1fr 1fr}}
+.fgrid h4{color:#fff;font-family:var(--disp);font-size:13px;letter-spacing:1px;text-transform:uppercase;margin-bottom:14px}
+.fgrid a,.fgrid p{display:block;color:var(--mut-d);text-decoration:none;font-size:14px;margin-bottom:9px}
+.fgrid a:hover{color:#fff}
+.fbottom{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;padding-top:22px}
+:focus-visible{outline:3px solid var(--amber);outline-offset:2px;border-radius:4px}
+
+.wa-float{position:fixed;right:20px;bottom:20px;z-index:50;width:56px;height:56px;border-radius:50%;
+background:#25D366;display:flex;align-items:center;justify-content:center;
+box-shadow:0 10px 26px -6px rgba(0,0,0,.5);transition:transform .15s ease}
+.wa-float:hover{transform:scale(1.06)}
+.wa-float svg{width:28px;height:28px}
+@media(max-width:520px){.wa-float{right:14px;bottom:14px;width:50px;height:50px}.wa-float svg{width:25px;height:25px}}
 </style>
 </head>
 <body>
-<div class="app">
-<aside class="sidebar">
- <div class="logo"><div class="logoMark">Z</div><span>ZanWIFI Connect</span></div>
- <nav class="nav">
-  <button class="active" data-page="dashboard">📊 <span>Dashboard</span></button>
-  <button data-page="customers">👥 <span>Wateja</span></button>
-  <button data-page="packages">📶 <span>Vifurushi</span></button>
-  <button data-page="devices">📡 <span>Vifaa / Routers</span></button>
-  <button data-page="hotspot">🔥 <span>Hotspot Business</span></button>
-  <button data-page="invoices">🧾 <span>Invoices</span></button>
-  <button data-page="purchases">🛒 <span>Manunuzi</span></button>
-  <button data-page="deliveries">🚚 <span>Delivery</span></button>
-  <button data-page="expenses">💰 <span>Matumizi</span></button>
- </nav>
-</aside>
-<main class="main">
-<header class="top"><h1 id="pageTitle">Dashboard</h1><div class="admin">ZanWIFI Connect • Admin</div></header>
-<div class="content">
 
-<section id="dashboard" class="page active">
- <div class="grid stats" id="stats"></div>
- <div class="grid two">
-  <div class="card"><div class="sectionTitle"><h2>Vifurushi vya Internet</h2></div><div id="packageSummary"></div></div>
-  <div class="card"><div class="sectionTitle"><h2>Muhtasari wa Stock</h2></div><div id="stockSummary"></div></div>
- </div>
- <div class="sectionTitle"><h2>Mapato / Invoices</h2><button class="btn gold" onclick="showPage('invoices')">Tazama zote</button></div>
- <div class="card"><div id="invoiceChart" class="chart"></div></div>
-</section>
+<header><div class="wrap">
+  <a class="logo" href="#top">ZanWIFI Connect</a>
+  <div class="auth-m">
+    <a class="in" href="https://zanwifi-connect-2.onrender.com/login.html">Login</a>
+    <a class="up" href="https://zanwifi-connect-2.onrender.com/register.html">Sign up</a>
+  </div>
+  <button id="menuBtn" aria-label="Menu">☰</button>
+  <nav id="nav">
+    <a href="#pay">Features</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#serve">Who It's For</a>
+    <a href="#about">About</a>
+    <a href="https://wa.me/255622948771">Contact</a>
+    <a class="cta ghost" href="https://zanwifi-connect-2.onrender.com/login.html" target="_blank" rel="noopener">Login</a>
+    <a class="cta" href="https://zanwifi-connect-2.onrender.com/register.html" target="_blank" rel="noopener">Get Started Free</a>
+  </nav>
+</div></header>
 
-<section id="customers" class="page">
- <div class="sectionTitle"><h2>Wateja</h2><button class="btn" onclick="alert('Fomu ya kuongeza mteja inaweza kuongezwa hapa.')">+ Mteja Mpya</button></div>
- <div class="card"><div class="toolbar"><input class="search" placeholder="Tafuta jina, simu, location..." oninput="filterTable('customerTable',this.value)"></div><div id="customerTable"></div></div>
-</section>
+<div class="hero" id="top"><div class="wrap">
+  <div>
+    <span class="eyebrow">ZanWIFI Connect</span>
+    <h1>Run Your Own <span class="u">WiFi Business</span> in Zanzibar and Tanzania</h1>
+    <p class="lead">ZanWIFI Connect turns your existing internet connection into a profitable hotspot business — mobile money billing, MikroTik integration, and a live revenue dashboard.</p>
+    <div class="acts">
+      <a class="btn amber" href="https://zanwifi-connect-2.onrender.com/register.html">Start Your WiFi Business</a>
+      <a class="btn sec" href="#pricing">See Pricing</a>
+    </div>
+    <div class="trust-pills">
+      <span>💰 Keep 100% of Revenue</span>
+      <span>📲 Mobile Money Built-in</span>
+      <span>📊 Live Dashboard</span>
+    </div>
+    <p class="promise"><b>We are not a payment aggregator.</b> Your customers pay straight into your own mobile-money account &mdash; we never touch that money.</p>
+    <p class="tagline">CONNECTING ZANZIBAR. EMPOWERING BUSINESSES.</p>
+  </div>
 
-<section id="packages" class="page">
- <div class="sectionTitle"><h2>Vifurushi</h2></div><div class="grid productGrid" id="packageCards"></div>
-</section>
+  <div class="stage">
+    <div class="mockup">
+      <div class="mh"><b>ZanWIFI Connect · Dashboard</b><span class="live-tag"><span class="live-dot"></span>LIVE</span></div>
+      <div class="mcards">
+        <div class="mcard"><div class="k">Today</div><div class="v">TZS 43,500</div></div>
+        <div class="mcard"><div class="k">This month</div><div class="v">TZS 1.1M</div></div>
+      </div>
+      <div class="bars" aria-hidden="true">
+        <i style="--h:35%"></i><i style="--h:52%"></i><i style="--h:40%"></i>
+        <i style="--h:68%"></i><i style="--h:58%"></i><i style="--h:78%"></i><i style="--h:90%"></i>
+      </div>
+      <div class="mrow"><span>Site 1 — Router</span><b>online</b></div>
+      <div class="mrow"><span>Active vouchers</span><b>212</b></div>
+      <div class="mrow"><span>MikroTik router</span><b>connected</b></div>
+    </div>
+  </div>
+</div></div>
 
-<section id="devices" class="page">
- <div class="sectionTitle"><h2>Vifaa / Routers</h2></div><div class="grid productGrid" id="deviceCards"></div>
-</section>
+<div class="brands">
+  <div class="wrap">
+    <div class="brands-h">WORKS WITH THE HARDWARE YOU ALREADY OWN</div>
+    <div class="brand-grid">
+        <span class="bt" data-proven="1"><b title="MikroTik supported">&#10003; MikroTik</b></span>
+        <span class="bt" data-proven="1"><b title="TP-Link Omada supported">&#10003; TP-Link Omada</b></span>
+        <span class="bt" data-proven="1"><b title="Cambium supported">&#10003; Cambium</b></span>
+        <span class="bt">Ubiquiti UniFi</span>
+        <span class="bt">Ruijie Reyee</span>
+        <span class="bt">Cudy</span>
+        <span class="bt">Ruckus</span>
+        <span class="bt">OpenWrt</span>
+        <span class="bt">Grandstream</span>
+        <span class="bt">Aruba</span>
+        <span class="bt">Cisco Meraki</span>
+        <span class="bt">pfSense</span>
+    </div>
+    <div class="brands-note"><b>&#10003; Proven on real operator hardware</b> &mdash; MikroTik, TP-Link Omada and Cambium are running live sites today. The rest connect over standard RADIUS voucher login. Send us a photo of your device label and we will tell you exactly what works.</div>
+  </div>
+</div>
 
-<section id="hotspot" class="page">
- <div class="sectionTitle"><h2>Hotspot Business</h2></div><div class="card" id="hotspotTable"></div>
-</section>
+<section class="pay-dark" id="pay"><div class="wrap">
+  <span class="sec-eyebrow amber-eyebrow">ZanWIFI Connect Platform</span>
+  <h2 class="sec-h">Build Your Own WiFi Business in Zanzibar and East Africa</h2>
+  <p class="sec-p">Already have internet? Don't let it sit idle — ZanWIFI Connect turns your existing connection into a profitable hotspot business.</p>
 
-<section id="invoices" class="page">
- <div class="sectionTitle"><h2>Invoices</h2></div><div class="card"><div class="toolbar"><input class="search" placeholder="Tafuta invoice au mteja..." oninput="filterTable('invoiceTable',this.value)"></div><div id="invoiceTable"></div></div>
-</section>
+  <div class="trust-box">
+    <div class="tb-head">
+      <span class="tb-ic">🛡️</span>
+      <div>
+        <h3>We are not a payment intermediary</h3>
+        <p>Your customers pay straight into your own payment gateway account, through your own API keys — the money goes directly to you. ZanWIFI Connect never receives, holds or touches it; we only verify that a payment succeeded so we can unlock internet access automatically.</p>
+      </div>
+    </div>
+  </div>
 
-<section id="purchases" class="page"><div class="sectionTitle"><h2>Manunuzi</h2></div><div class="card" id="purchaseTable"></div></section>
-<section id="deliveries" class="page"><div class="sectionTitle"><h2>Delivery Reports</h2></div><div class="card" id="deliveryTable"></div></section>
-<section id="expenses" class="page"><div class="sectionTitle"><h2>Matumizi / Expenses</h2></div><div class="card" id="expenseTable"></div></section>
+  <h3 style="margin-top:34px;font-size:19px">Onboarding requirements</h3>
+  <p class="sec-p" style="margin-top:6px">Three things to check off before going live.</p>
+  <div class="onboard">
+    <div class="ob">
+      <div class="top"><span class="ic">📡</span><span class="req r1">Required</span></div>
+      <h4>MikroTik or any RADIUS router</h4>
+      <p>ZanWIFI Connect connects directly to your MikroTik to manage hotspot sessions in real time (RouterOS 6/7). Also works with any RADIUS-compatible router.</p>
+    </div>
+    <div class="ob">
+      <div class="top"><span class="ic">📲</span><span class="req r2">Recommended</span></div>
+      <h4>Payment gateway account</h4>
+      <p>Works with AzamPay, ClickPesa, PalmPesa, and more — your own account, your own money, zero delay.</p>
+    </div>
+    <div class="ob">
+      <div class="top"><span class="ic">💬</span><span class="req r3">Optional</span></div>
+      <h4>SMS or WhatsApp</h4>
+      <p>Send payment confirmations and expiry reminders to your customers directly.</p>
+    </div>
+  </div>
 
-</div></main></div>
+  <div class="migrate" style="margin-top:40px">
+    <div>
+      <p class="sec-p">ZanWIFI Connect is a cloud-based platform built specifically for MikroTik hotspot environments — perfect for hotels, student hostels, bus stations, markets, cafés, and independent WiFi entrepreneurs in Zanzibar and Tanzania.</p>
+      <h3 style="margin-top:30px;font-size:19px">Why choose ZanWIFI Connect?</h3>
+      <div class="features">
+        <div class="feature"><span class="ic">⚙️</span>MikroTik &amp; RADIUS support</div>
+        <div class="feature"><span class="ic">💳</span>AzamPay &amp; Mobile Money</div>
+        <div class="feature"><span class="ic">🎟️</span>Voucher management</div>
+        <div class="feature"><span class="ic">📅</span>Monthly packages</div>
+        <div class="feature"><span class="ic">👤</span>Customer accounts</div>
+        <div class="feature"><span class="ic">📊</span>Revenue reports</div>
+        <div class="feature"><span class="ic">📶</span>Bandwidth control</div>
+        <div class="feature"><span class="ic">🏢</span>Multi-location support</div>
+      </div>
+      <div class="acts" style="margin-top:26px">
+        <a class="btn amber" href="https://zanwifi-connect-2.onrender.com/register.html" target="_blank" rel="noopener">Get Started Free</a>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <span class="sec-eyebrow">Your Business, At A Glance</span>
+  <h2 class="sec-h">A real dashboard — not a mockup.</h2>
+  <p class="sec-p">Every ZanWIFI operator gets a live dashboard: revenue today, this month, per-site performance, and every sale — from your phone or laptop.</p>
+  <div class="dash-frame">
+    <div class="df-bar"><span></span><span></span><span></span></div>
+    <div class="df-body">
+      <div class="df-side">
+        <div class="df-dot on"></div><div class="df-dot"></div><div class="df-dot"></div>
+      </div>
+      <div class="df-main">
+        <div class="df-cards">
+          <div class="df-card b"><span>Today</span><b>TZS 43,500</b></div>
+          <div class="df-card a"><span>Sales today</span><b>38</b></div>
+          <div class="df-card g"><span>Last 7 days</span><b>TZS 298,000</b></div>
+          <div class="df-card b"><span>This month</span><b>TZS 1.1M</b></div>
+        </div>
+        <div class="df-row"><span>Site 1 — 24 Hours</span><b>TZS 1,000 ✓</b></div>
+        <div class="df-row"><span>Site 1 — 6 Hours</span><b>TZS 500 ✓</b></div>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<section class="gray" id="serve"><div class="wrap">
+  <span class="sec-eyebrow">Who We Serve</span>
+  <h2 class="sec-h">Built for the places people need connectivity most in Zanzibar.</h2>
+  <div class="serve">
+    <div class="card"><div class="ic">🏨</div><div class="lb">Hotels & Resorts</div></div>
+    <div class="card"><div class="ic">🏠</div><div class="lb">Student Hostels</div></div>
+    <div class="card"><div class="ic">☕</div><div class="lb">Cafés & Restaurants</div></div>
+    <div class="card"><div class="ic">🛒</div><div class="lb">Local Markets</div></div>
+    <div class="card"><div class="ic">💡</div><div class="lb">WiFi Entrepreneurs</div></div>
+    <div class="card"><div class="ic">🏘️</div><div class="lb">Residential Communities</div></div>
+  </div>
+</div></section>
+
+<section id="pricing"><div class="wrap">
+  <span class="sec-eyebrow amber-eyebrow">ZanWIFI Pricing</span>
+  <h2 class="sec-h">Run your own WiFi business, keep 100% of the revenue.</h2>
+  <p class="sec-p">Simple pricing designed to grow with your business.</p>
+  <div class="pplans">
+    <div class="pplan"><div class="nm">Free</div><div class="pz">0<small style="font-size:13px;color:var(--mut)"> /=</small></div>
+      <div class="ds">1 router, every feature, forever.</div>
+      <ul class="pp-feats"><li>1 router included</li><li>Every feature unlocked</li><li>MikroTik support</li></ul>
+      <a class="btn pri" style="margin-top:16px;display:block;text-align:center;padding:10px" href="https://zanwifi-connect-2.onrender.com/register.html">Get Started Free</a></div>
+    <div class="pplan"><div class="nm">Twiga</div><div class="pz">5,000<small style="font-size:13px;color:var(--mut)"> /=/mo</small></div>
+      <div class="ds">2–3 routers or 50 online users.</div>
+      <ul class="pp-feats"><li>Everything in Free</li><li>Room to grow</li><li>Live dashboard &amp; reports</li></ul>
+      <a class="btn pri" style="margin-top:16px;display:block;text-align:center;padding:10px" href="https://zanwifi-connect-2.onrender.com/register.html">Choose Twiga</a></div>
+    <div class="pplan hot"><span class="flag">MOST POPULAR</span><div class="nm">Tembo</div><div class="pz">10,000<small style="font-size:13px;color:var(--mut)"> /=/mo</small></div>
+      <div class="ds">4–6 routers or 250 online users.</div>
+      <ul class="pp-feats"><li>Everything in Twiga</li><li>Multi-site operators</li><li>Priority support</li></ul>
+      <a class="btn pri" style="margin-top:16px;display:block;text-align:center;padding:10px" href="https://zanwifi-connect-2.onrender.com/register.html">Choose Tembo</a></div>
+    <div class="pplan"><div class="nm">Simba</div><div class="pz">15,000<small style="font-size:13px;color:var(--mut)"> /=/mo</small></div>
+      <div class="ds">7+ routers, unlimited users.</div>
+      <ul class="pp-feats"><li>Everything in Tembo</li><li>Unlimited online users</li><li>Dedicated assistance</li></ul>
+      <a class="btn pri" style="margin-top:16px;display:block;text-align:center;padding:10px" href="https://zanwifi-connect-2.onrender.com/register.html">Choose Simba</a></div>
+  </div>
+</div></section>
+
+<section class="gray" id="about"><div class="wrap">
+  <div class="about-grid">
+    <div>
+      <span class="sec-eyebrow">About ZanWIFI Connect</span>
+      <h2 class="sec-h">Empowering connectivity across Zanzibar</h2>
+      <p class="sec-p">ZanWIFI Connect provides the technology platform that allows local entrepreneurs, hotels, and businesses to effortlessly operate their own commercial wireless hotspot networks with automated mobile money payments.</p>
+    </div>
+    <div class="about-card">
+      <div class="row"><span>Built for</span><b>Zanzibar & Tanzania</b></div>
+      <div class="row"><span>Routers supported</span><b>MikroTik + RADIUS</b></div>
+      <div class="row"><span>Payment methods</span><b>M-Pesa, Tigo, AzamPay</b></div>
+      <div class="row"><span>Pricing from</span><b>Free</b></div>
+    </div>
+  </div>
+</div></section>
+
+<footer><div class="wrap">
+  <div class="fgrid">
+    <div>
+      <a class="logo" href="#top">ZanWIFI Connect</a>
+      <p style="margin-top:14px;max-width:280px">Connecting Zanzibar. Empowering Businesses.</p>
+    </div>
+    <div>
+      <h4>Product</h4>
+      <a href="https://zanwifi-connect-2.onrender.com">Portal Login</a>
+      <a href="#pricing">Pricing Plans</a>
+    </div>
+    <div>
+      <h4>Company</h4>
+      <a href="#about">About</a>
+      <a href="#pricing">Pricing</a>
+      <a href="https://wa.me/255622948771">Contact</a>
+    </div>
+    <div>
+      <h4>Support</h4>
+      <a href="https://wa.me/255622948771">WhatsApp Support</a>
+    </div>
+  </div>
+  <div class="fbottom">
+    <span>WhatsApp: <a href="https://wa.me/255622948771">+255 622 948 771</a> · <a href="mailto:info@zanwificonnect.com">info@zanwificonnect.com</a></span>
+    <span>© 2026 ZanWIFI Connect</span>
+  </div>
+</div></footer>
+
+<a class="wa-float" href="https://wa.me/255622948771" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+  <svg viewBox="0 0 24 24" fill="#fff"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.39 1.26 4.81L2.05 22l5.44-1.32a9.86 9.86 0 0 0 4.55 1.13h.01c5.46 0 9.9-4.45 9.9-9.9S17.5 2 12.04 2Zm0 18.06h-.01a8.18 8.18 0 0 1-4.16-1.14l-.3-.18-3.23.78.78-3.15-.19-.32a8.17 8.17 0 0 1-1.26-4.34c0-4.53 3.68-8.21 8.22-8.21 2.2 0 4.26.86 5.81 2.41a8.15 8.15 0 0 1 2.4 5.8c0 4.53-3.68 8.35-8.06 8.35Zm4.5-6.14c-.25-.12-1.45-.72-1.67-.8-.22-.08-.39-.12-.55.12-.16.25-.63.8-.78.96-.14.16-.29.18-.54.06-.25-.12-1.04-.38-1.98-1.22-.73-.65-1.23-1.46-1.37-1.7-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.15.16-.25.24-.41.08-.16.04-.31-.02-.43-.06-.12-.55-1.33-.76-1.82-.2-.48-.4-.41-.55-.42h-.47c-.16 0-.42.06-.64.31-.22.25-.85.83-.85 2.02 0 1.19.87 2.34 1 2.5.12.16 1.7 2.6 4.13 3.65.58.25 1.03.4 1.38.51.58.18 1.11.16 1.53.1.47-.07 1.45-.59 1.65-1.16.2-.57.2-1.06.14-1.16-.06-.1-.22-.16-.47-.28Z"/></svg>
+</a>
 
 <script>
-const DATA = {"customers": [{"customer_id": "3", "full_name": "CHUO CHA MAFUNZO K/NO1", "phone_number": "----", "address": "kilimani", "created_at": "2026-08-05 09:32:42", "account_no": "255743602579", "device_number": "255749640589", "package_type": "Vodacom", "start_date": "2026-08-05", "end_date": "2026-09-04"}, {"customer_id": "6", "full_name": "OMMY", "phone_number": "---", "address": "kilimani", "created_at": "2026-08-06 09:43:45", "account_no": "255770190471", "device_number": "255770190471", "package_type": "Zantel / Tigo", "start_date": "0000-00-00", "end_date": "0000-00-00"}, {"customer_id": "7", "full_name": "JUMA KONDO IBRAHIM", "phone_number": "0777470291", "address": "KWA ALINATO", "created_at": "2026-08-17 05:04:49", "account_no": "0703766458", "device_number": "0703766458", "package_type": "Zantel / Tigo", "start_date": "2026-08-17", "end_date": "2026-09-17"}, {"customer_id": "8", "full_name": "ADHERA SEIF SAID", "phone_number": "0779665011", "address": "MWERA MELI  6", "created_at": "2026-08-17 05:06:04", "account_no": "0703678517", "device_number": "0703678517", "package_type": "Zantel / Tigo", "start_date": "2026-08-17", "end_date": "2026-09-17"}, {"customer_id": "9", "full_name": "KHALID MASOUD ABDALLA", "phone_number": "0657100015", "address": "PEMBA", "created_at": "2026-08-17 05:09:11", "account_no": "0677079480", "device_number": "0677079480", "package_type": "Zantel / Tigo", "start_date": "2026-08-17", "end_date": "2026-09-17"}, {"customer_id": "10", "full_name": "HALIMA HAMAD SULEIMAN", "phone_number": "0671493182", "address": "MAUNGANI", "created_at": "2026-08-17 11:18:25", "account_no": "0705465105", "device_number": "0705465105", "package_type": "Zantel / Tigo", "start_date": "0000-00-00", "end_date": "0000-00-00"}], "devices": [{"device_id": "1", "device_type": "Router", "brand_model": "Cudy N400", "price": "145000.00", "stock_quantity": "0", "status": "Out of Stock", "image": "device_1785918067.webp"}, {"device_id": "2", "device_type": "Router", "brand_model": "Olax", "price": "110000.00", "stock_quantity": "2", "status": "In Stock", "image": "device_1785918292.png"}, {"device_id": "3", "device_type": "Router", "brand_model": "OLAX M100 4G/5G Pocket Router with Wi-Fi 6", "price": "120000.00", "stock_quantity": "0", "status": "Out of Stock", "image": "device_1785918672.webp"}, {"device_id": "4", "device_type": "Router", "brand_model": "ZTE K12", "price": "145000.00", "stock_quantity": "0", "status": "Out of Stock", "image": "device_1786596027.jpg"}, {"device_id": "5", "device_type": "Router", "brand_model": "portable 4G", "price": "60000.00", "stock_quantity": "3", "status": "In Stock", "image": "device_1786599855.webp"}], "packages": [{"package_id": "1", "provider": "Yas", "package_name": "10Mbps", "price": "70000.00", "duration": "Siku 30"}, {"package_id": "2", "provider": "Vodacom", "package_name": "10Mbps", "price": "70000.00", "duration": "Siku 30"}, {"package_id": "3", "provider": "Yas", "package_name": "20Mbps", "price": "100000.00", "duration": "Siku 30"}], "invoices": [{"id": "10", "invoice_number": "INV-20260818-48C0E", "client_name": "ADHERA SEIF SAID", "client_phone": "N/A", "client_email": "N/A", "client_location": "MWERA MELI  6", "service_name": "YAS Plan", "speed_mbps": "10 Mbps", "router_model": "Router", "amount": "160000.00", "payment_status": "paid", "payment_type": "manual", "invoice_date": "2026-08-17", "created_at": "2026-08-18 08:49:29"}, {"id": "11", "invoice_number": "INV-20260818-528C2", "client_name": "JUMA KONDO IBRAHIM", "client_phone": "N/A", "client_email": "N/A", "client_location": "KWA ALINATO", "service_name": "YAS Plan", "speed_mbps": "10 Mbps", "router_model": "Kifurushi", "amount": "70000.00", "payment_status": "paid", "payment_type": "manual", "invoice_date": "2026-08-17", "created_at": "2026-08-18 09:01:27"}, {"id": "12", "invoice_number": "INV-20260818-27744", "client_name": "KHALID MASOUD ABDALLA", "client_phone": "N/A", "client_email": "N/A", "client_location": "PEMBA", "service_name": "YAS Plan", "speed_mbps": "100 Mbps", "router_model": "Router, Hotspot Business, MikroTik Router, Kifurushi", "amount": "620000.00", "payment_status": "paid", "payment_type": "manual", "invoice_date": "2026-08-17", "created_at": "2026-08-18 09:03:42"}], "purchases": [{"purchase_id": "1", "customer_name": "ABDULKADIR MOHAMED", "item_name": "kifurushi", "quantity": "1", "total_price": "70000.00", "payment_method": "TigoPesa", "purchase_date": "2026-08-05 10:01:01", "unit_price": "0.00", "purchased_by": ""}, {"purchase_id": "2", "customer_name": "", "item_name": "kifurushi", "quantity": "1", "total_price": "70000.00", "payment_method": "", "purchase_date": "2026-08-04 21:00:00", "unit_price": "70000.00", "purchased_by": "ABDULKADIR MOHAMED"}, {"purchase_id": "3", "customer_name": "", "item_name": "ZTE K12", "quantity": "1", "total_price": "130000.00", "payment_method": "", "purchase_date": "2026-08-14 21:00:00", "unit_price": "130000.00", "purchased_by": "PEMBA"}], "hotspot_clients": [{"id": "1", "client_name": "Hope Happy", "phone": "0777223183", "location": "kazole matetema", "router_model": "Mikrotik", "installation_date": "2026-08-06", "status": "Active"}], "delivery_reports": [{"id": "2", "tracking_no": "", "tracking_code": null, "customer_name": "khalid", "item_name": "YAS 5G", "phone_number": "0657100015", "item_description": "", "destination": "", "courier_person": "", "delivery_status": "Delivered", "location": "Wete", "delivery_date": "2026-08-14", "notes": null, "status": "Imewasilishwa", "created_at": "2026-08-14 11:13:21"}], "expenses": [{"id": "1", "title": "OLAX  PORTABLE", "category": "Vifaa & Zana", "amount": "180000.00", "date": "2026-08-17", "description": "", "created_at": "2026-08-18 07:03:17"}]};
-
-const money = n => new Intl.NumberFormat('sw-TZ').format(Number(n||0)) + ' TZS';
-const esc = s => String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]));
-
-function table(rows, cols, id){
- if(!rows.length) return '<div class="notice">Hakuna data iliyopo.</div>';
- return `<table id="${id||''}"><thead><tr>${cols.map(c=>`<th>${c.label}</th>`).join('')}</tr></thead><tbody>${
- rows.map(r=>`<tr>${cols.map(c=>`<td>${c.render?c.render(r):esc(r[c.key])}</td>`).join('')}</tr>`).join('')
- }</tbody></table>`;
-}
-function filterTable(id,q){
- const t=document.getElementById(id); if(!t)return;
- [...t.tBodies[0].rows].forEach(r=>r.style.display=r.innerText.toLowerCase().includes(q.toLowerCase())?'':'none');
-}
-function showPage(name){
- document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
- document.getElementById(name).classList.add('active');
- document.querySelectorAll('.nav button').forEach(b=>b.classList.toggle('active',b.dataset.page===name));
- document.getElementById('pageTitle').textContent=document.querySelector(`[data-page="${name}"] span`)?.textContent||'Dashboard';
- window.scrollTo(0,0);
-}
-document.querySelectorAll('.nav button').forEach(b=>b.onclick=()=>showPage(b.dataset.page));
-
-function render(){
- const paid=DATA.invoices.filter(x=>String(x.payment_status).toLowerCase()==='paid');
- const revenue=paid.reduce((s,x)=>s+Number(x.amount||0),0);
- const stock=DATA.devices.reduce((s,x)=>s+Number(x.stock_quantity||0),0);
- document.getElementById('stats').innerHTML=[
-  ['👥',DATA.customers.length,'Wateja'],
-  ['📶',DATA.packages.length,'Vifurushi'],
-  ['📡',stock,'Vifaa Stock'],
-  ['💵',money(revenue),'Mapato ya Invoices']
- ].map(x=>`<div class="card stat"><div><div class="label">${x[2]}</div><div class="num">${x[1]}</div></div><div class="icon">${x[0]}</div></div>`).join('');
-
- document.getElementById('packageSummary').innerHTML=DATA.packages.map(p=>`<div style="display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--line)"><span><b>${esc(p.provider)}</b> — ${esc(p.package_name)}</span><b>${money(p.price)}</b></div>`).join('')||'<div class="notice">Hakuna vifurushi.</div>';
-
- document.getElementById('stockSummary').innerHTML=DATA.devices.map(d=>`<div style="padding:10px 0;border-bottom:1px solid var(--line);display:flex;justify-content:space-between"><span>${esc(d.brand_model)}</span><span class="badge ${Number(d.stock_quantity)>0?'ok':'danger'}">${Number(d.stock_quantity)>0?d.stock_quantity+' In Stock':'Out of Stock'}</span></div>`).join('');
-
- const max=Math.max(1,...paid.map(x=>Number(x.amount||0)));
- document.getElementById('invoiceChart').innerHTML=paid.slice(-8).map(x=>{let h=Math.max(8,Number(x.amount)/max*210);return `<div class="barWrap" style="--h:${h}px"><span class="barVal">${money(x.amount)}</span><div class="bar" style="height:${h}px"></div><span class="barLbl">${esc(x.invoice_number||'INV')}</span></div>`}).join('')||'<div class="notice">Hakuna invoice za paid.</div>';
-
- document.getElementById('customerTable').innerHTML=table(DATA.customers,
- [{label:'ID',key:'customer_id'},{label:'Jina',key:'full_name'},{label:'Simu',key:'phone_number'},{label:'Location',key:'address'},{label:'Package',key:'package_type'},{label:'Mwanzo',key:'start_date'},{label:'Mwisho',key:'end_date'}],'customerTableTable');
-
- document.getElementById('packageCards').innerHTML=DATA.packages.map(p=>`<div class="card product"><div class="label">${esc(p.provider)}</div><h3>${esc(p.package_name)}</h3><div class="price">${money(p.price)}</div><div class="stock">⏱ ${esc(p.duration)}</div></div>`).join('');
-
- document.getElementById('deviceCards').innerHTML=DATA.devices.map(d=>`<div class="card product"><div class="label">${esc(d.device_type)}</div><h3>${esc(d.brand_model)}</h3><div class="price">${money(d.price)}</div><div class="stock"><span class="badge ${Number(d.stock_quantity)>0?'ok':'danger'}">${Number(d.stock_quantity)>0?'Stock: '+d.stock_quantity:'Out of Stock'}</span></div></div>`).join('');
-
- document.getElementById('hotspotTable').innerHTML=table(DATA.hotspot_clients,
- [{label:'Jina',key:'client_name'},{label:'Simu',key:'phone'},{label:'Location',key:'location'},{label:'Router',key:'router_model'},{label:'Installation',key:'installation_date'},{label:'Status',key:'status',render:r=>`<span class="badge ${r.status==='Active'?'ok':'danger'}">${esc(r.status)}</span>`}]);
-
- document.getElementById('invoiceTable').innerHTML=table(DATA.invoices,
- [{label:'Invoice',key:'invoice_number'},{label:'Mteja',key:'client_name'},{label:'Service',key:'service_name'},{label:'Speed',key:'speed_mbps'},{label:'Amount',key:'amount',render:r=>money(r.amount)},{label:'Payment',key:'payment_status',render:r=>`<span class="badge ${String(r.payment_status).toLowerCase()==='paid'?'ok':'warn'}">${esc(r.payment_status)}</span>`},{label:'Date',key:'invoice_date'}],'invoiceTable');
-
- document.getElementById('purchaseTable').innerHTML=table(DATA.purchases,
- [{label:'Mteja',key:'customer_name'},{label:'Item',key:'item_name'},{label:'Qty',key:'quantity'},{label:'Total',key:'total_price',render:r=>money(r.total_price)},{label:'Njia',key:'payment_method'},{label:'Tarehe',key:'purchase_date'}]);
-
- document.getElementById('deliveryTable').innerHTML=table(DATA.delivery_reports,
- [{label:'Mteja',key:'customer_name'},{label:'Item',key:'item_name'},{label:'Simu',key:'phone_number'},{label:'Destination',key:'destination'},{label:'Location',key:'location'},{label:'Status',key:'delivery_status',render:r=>`<span class="badge ${r.delivery_status==='Delivered'?'ok':'warn'}">${esc(r.delivery_status)}</span>`},{label:'Tarehe',key:'delivery_date'}]);
-
- document.getElementById('expenseTable').innerHTML=table(DATA.expenses,
- [{label:'Title',key:'title'},{label:'Category',key:'category'},{label:'Amount',key:'amount',render:r=>money(r.amount)},{label:'Date',key:'date'},{label:'Description',key:'description'}]);
-}
-render();
+document.getElementById("menuBtn").onclick=()=>{
+  document.getElementById("nav").classList.toggle("open");
+};
+document.querySelectorAll("#nav a").forEach(a=>a.addEventListener("click",()=>{
+  document.getElementById("nav").classList.remove("open");
+}));
 </script>
 </body>
 </html>
