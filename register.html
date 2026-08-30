@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Create Account — ZanWIFI Connect</title>
+<meta name="description" content="Create your ZanWIFI Connect account and start running your own WiFi hotspot business with mobile money billing and MikroTik integration.">
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=IBM+Plex+Sans:wght@400;600&family=IBM+Plex+Mono:wght@600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --night:#0D1B2C; --night-2:#122438; --paper:#FFFFFF; --soft:#F2F6FA;
+  --net:#1D7BFF; --net-deep:#0B5BD3; --amber:#FFB020; --amber-d:#B36A00; --ok:#19B37B;
+  --ink:#13202F; --mut:#5D6E80; --mut-d:#94A9BE; --line:#DCE5EE; --line-d:#24384F;
+  --disp:"Space Grotesk",sans-serif; --body:"IBM Plex Sans",system-ui,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font:16px/1.65 var(--body);color:var(--ink);background:var(--soft);min-height:100vh;display:flex;flex-direction:column;justify-content:space-between}
+a{color:inherit;text-decoration:none}
+::selection{background:var(--amber);color:var(--night)}
+
+.auth-header{background:rgba(13,27,44,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line-d);padding:0 22px;height:62px;display:flex;align-items:center}
+.auth-header .wrap{width:100%;max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;align-items:center}
+.logo{display:flex;align-items:center;gap:10px;color:#fff;font-weight:700;font-family:var(--disp);font-size:18px}
+.back-home{color:var(--mut-d);font-size:13.5px;font-weight:600}
+.back-home:hover{color:#fff}
+
+.auth-main{flex:1;display:flex;align-items:center;justify-content:center;padding:40px 16px}
+.auth-card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:36px;width:100%;max-width:440px;box-shadow:0 20px 40px -15px rgba(0,0,0,.08)}
+.auth-card h1{font-family:var(--disp);font-size:24px;margin-bottom:6px;letter-spacing:-.3px}
+.auth-card p{color:var(--mut);font-size:14px;margin-bottom:24px}
+
+.form-group{margin-bottom:16px}
+.form-group label{display:block;font-size:13px;font-weight:600;margin-bottom:6px;color:var(--ink)}
+.form-control{width:100%;padding:12px 14px;border:1px solid var(--line);border-radius:10px;font:inherit;font-size:14.5px;color:var(--ink);background:#fff;transition:border-color .15s,box-shadow .15s}
+.form-control:focus{outline:none;border-color:var(--net);box-shadow:0 0 0 3px rgba(29,123,255,.15)}
+
+.form-terms{font-size:12.5px;color:var(--mut);margin-bottom:20px;display:flex;align-items:flex-start;gap:8px}
+.form-terms input{margin-top:3px;accent-color:var(--net)}
+.form-terms a{color:var(--net-deep);font-weight:600}
+
+.btn-submit{width:100%;background:var(--net);color:#fff;border:none;border-radius:10px;padding:12px;font:600 15px var(--body);cursor:pointer;transition:background .12s ease,transform .12s ease}
+.btn-submit:hover{background:var(--net-deep);transform:translateY(-1px)}
+
+.auth-footer-text{text-align:center;margin-top:20px;font-size:13.5px;color:var(--mut)}
+.auth-footer-text a{color:var(--net-deep);font-weight:600}
+.auth-footer-text a:hover{text-decoration:underline}
+
+footer{background:var(--night);color:var(--mut-d);padding:24px 0;font-size:13px;text-align:center}
+footer a{color:#fff}
+</style>
+</head>
+<body>
+
+<header class="auth-header"><div class="wrap">
+  <a class="logo" href="https://zanwifi-connect.onrender.com/">ZanWIFI Connect</a>
+  <a class="back-home" href="https://zanwifi-connect.onrender.com/">← Back to Home</a>
+</div></header>
+
+<main class="auth-main">
+  <div class="auth-card">
+    <h1>Create your account</h1>
+    <p>Start running your own WiFi business in Zanzibar & Tanzania.</p>
+    
+    <form onsubmit="event.preventDefault(); alert('Registration integration goes here!');">
+      <div class="form-group">
+        <label for="fullname">Full name or Business name</label>
+        <input type="text" id="fullname" class="form-control" placeholder="Mbarak Hotel / Stone Town Café" required>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email address</label>
+        <input type="email" id="email" class="form-control" placeholder="name@example.com" required>
+      </div>
+      
+      <div class="form-group">
+        <label for="phone">Phone number (WhatsApp / Mobile Money)</label>
+        <input type="tel" id="phone" class="form-control" placeholder="+255 777 000 000" required>
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" class="form-control" placeholder="At least 6 characters" required>
+      </div>
+      
+      <div class="form-terms">
+        <input type="checkbox" id="terms" required>
+        <label for="terms" style="font-weight:400;color:var(--mut);display:inline">I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>.</label>
+      </div>
+      
+      <button type="submit" class="btn-submit">Create Free Account</button>
+    </form>
+    
+    <div class="auth-footer-text">
+      Already have an account? <a href="login.html">Log in</a>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div>© 2026 ZanWIFI Connect · Connecting Zanzibar. Empowering Businesses.</div>
+</footer>
+
+</body>
+</html>
