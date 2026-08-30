@@ -1,70 +1,70 @@
-!DOCTYPE html
-html lang=sw
-head
-    meta charset=UTF-8
-    meta name=viewport content=width=device-width, initial-scale=1.0
-    titleZanwifi Portal - Sign In  Sign Uptitle
-    style
-         { box-sizing border-box; margin 0; padding 0; font-family 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-        body { background linear-gradient(135deg, #007bff, #00d4ff); height 100vh; display flex; justify-content center; align-items center; padding 20px; }
-        .container { background #ffffff; padding 30px; border-radius 12px; box-shadow 0 10px 25px rgba(0, 0, 0, 0.2); width 100%; max-width 400px; text-align center; }
-        h2 { color #333; margin-bottom 10px; font-size 24px; }
-        p { color #666; font-size 14px; margin-bottom 20px; }
-        .form-group { margin-bottom 15px; text-align left; }
-        label { display block; margin-bottom 6px; color #444; font-weight 600; font-size 13px; }
-        input { width 100%; padding 12px; border 1px solid #ccc; border-radius 8px; font-size 15px; outline none; }
-        inputfocus { border-color #007bff; }
-        button { width 100%; padding 12px; background #007bff; border none; border-radius 8px; color white; font-size 15px; font-weight bold; cursor pointer; transition background 0.3s; margin-top 5px; }
-        buttonhover { background #0056b3; }
-        .switch-text { margin-top 15px; font-size 14px; color #666; }
-        .switch-text span { color #007bff; cursor pointer; font-weight bold; }
-        .hidden { display none; }
-        #response-message { margin-top 15px; font-size 14px; font-weight 600; }
-    style
-head
-body
+<!DOCTYPE html>
+<html lang="sw">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zanwifi Portal - Sign In / Sign Up</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background: linear-gradient(135deg, #007bff, #00d4ff); height: 100vh; display: flex; justify-content: center; align-items: center; padding: 20px; }
+        .container { background: #ffffff; padding: 30px; border-radius: 12px; box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2); width: 100%; max-width: 400px; text-align: center; }
+        h2 { color: #333; margin-bottom: 10px; font-size: 24px; }
+        p { color: #666; font-size: 14px; margin-bottom: 20px; }
+        .form-group { margin-bottom: 15px; text-align: left; }
+        label { display: block; margin-bottom: 6px; color: #444; font-weight: 600; font-size: 13px; }
+        input { width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 8px; font-size: 15px; outline: none; }
+        input:focus { border-color: #007bff; }
+        button { width: 100%; padding: 12px; background: #007bff; border: none; border-radius: 8px; color: white; font-size: 15px; font-weight: bold; cursor: pointer; transition: background 0.3s; margin-top: 5px; }
+        button:hover { background: #0056b3; }
+        .switch-text { margin-top: 15px; font-size: 14px; color: #666; }
+        .switch-text span { color: #007bff; cursor: pointer; font-weight: bold; }
+        .hidden { display: none; }
+        #response-message { margin-top: 15px; font-size: 14px; font-weight: 600; }
+    </style>
+</head>
+<body>
 
-    div class=container
-        !-- Fomu ya Kuingia (Sign In) --
-        div id=signin-section
-            h2Karibu Zanwifih2
-            pIngia ili uendelee kutumia intaneti.p
-            form id=signin-form
-                div class=form-group
-                    labelNamba ya Simulabel
-                    input type=text id=signin-phone placeholder=Mfano 0777XXXXXX required
-                div
-                div class=form-group
-                    labelNenosiri (Password)label
-                    input type=password id=signin-password placeholder=Weka nenosiri lako required
-                div
-                button type=submitIngia (Sign In)button
-            form
-            div class=switch-textHaujaandikishwa span onclick=toggleForm('signup')Jisajili hapaspandiv
-        div
+    <div class="container">
+        <!-- Fomu ya Kuingia (Sign In) -->
+        <div id="signin-section">
+            <h2>Karibu Zanwifi</h2>
+            <p>Ingia ili uendelee kutumia intaneti.</p>
+            <form id="signin-form">
+                <div class="form-group">
+                    <label>Namba ya Simu</label>
+                    <input type="text" id="signin-phone" placeholder="Mfano: 0777XXXXXX" required>
+                </div>
+                <div class="form-group">
+                    <label>Nenosiri (Password)</label>
+                    <input type="password" id="signin-password" placeholder="Weka nenosiri lako" required>
+                </div>
+                <button type="submit">Ingia (Sign In)</button>
+            </form>
+            <div class="switch-text">Haujaandikishwa? <span onclick="toggleForm('signup')">Jisajili hapa</span></div>
+        </div>
 
-        !-- Fomu ya Kujisajili (Sign Up) --
-        div id=signup-section class=hidden
-            h2Fungua Akauntih2
-            pJisajili ili uweze kupata huduma ya Zanwifi.p
-            form id=signup-form
-                div class=form-group
-                    labelNamba ya Simulabel
-                    input type=text id=signup-phone placeholder=Mfano 0777XXXXXX required
-                div
-                div class=form-group
-                    labelNenosiri (Password)label
-                    input type=password id=signup-password placeholder=Tengeneza nenosiri required
-                div
-                button type=submitJisajili (Sign Up)button
-            form
-            div class=switch-textUna akaunti tayari span onclick=toggleForm('signin')Ingia hapaspandiv
-        div
+        <!-- Fomu ya Kujisajili (Sign Up) -->
+        <div id="signup-section" class="hidden">
+            <h2>Fungua Akaunti</h2>
+            <p>Jisajili ili uweze kupata huduma ya Zanwifi.</p>
+            <form id="signup-form">
+                <div class="form-group">
+                    <label>Namba ya Simu</label>
+                    <input type="text" id="signup-phone" placeholder="Mfano: 0777XXXXXX" required>
+                </div>
+                <div class="form-group">
+                    <label>Nenosiri (Password)</label>
+                    <input type="password" id="signup-password" placeholder="Tengeneza nenosiri" required>
+                </div>
+                <button type="submit">Jisajili (Sign Up)</button>
+            </form>
+            <div class="switch-text">Una akaunti tayari? <span onclick="toggleForm('signin')">Ingia hapa</span></div>
+        </div>
 
-        div id=response-messagediv
-    div
+        <div id="response-message"></div>
+    </div>
 
-    script
+    <script>
         function toggleForm(type) {
             const signinSec = document.getElementById('signin-section');
             const signupSec = document.getElementById('signup-section');
@@ -79,54 +79,58 @@ body
             }
         }
 
-         Kushughulikia Sign In
+        // Kushughulikia Sign In
         document.getElementById('signin-form').addEventListener('submit', async function(e) {
             e.preventDefault();
             const phone = document.getElementById('signin-phone').value;
             const password = document.getElementById('signin-password').value;
             const msg = document.getElementById('response-message');
 
-            msg.style.color = '#007bff'; msg.innerText = 'Inathibitisha...';
+            msg.style.color = '#007bff'; 
+            msg.innerText = 'Inathibitisha...';
 
             try {
-                const res = await fetch('apisignin', {
-                    method 'POST',
-                    headers { 'Content-Type' 'applicationjson' },
-                    body JSON.stringify({ phone, password })
+                const res = await fetch('/api/signin', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ phone, password })
                 });
                 const data = await res.json();
-                msg.style.color = data.success  'green'  'red';
+                msg.style.color = data.success ? 'green' : 'red';
                 msg.innerText = data.message;
             } catch (err) {
-                msg.style.color = 'red'; msg.innerText = 'Hitilafu ya mtandao.';
+                msg.style.color = 'red'; 
+                msg.innerText = 'Hitilafu ya mtandao.';
             }
         });
 
-         Kushughulikia Sign Up
+        // Kushughulikia Sign Up
         document.getElementById('signup-form').addEventListener('submit', async function(e) {
             e.preventDefault();
             const phone = document.getElementById('signup-phone').value;
             const password = document.getElementById('signup-password').value;
             const msg = document.getElementById('response-message');
 
-            msg.style.color = '#007bff'; msg.innerText = 'Inasajili...';
+            msg.style.color = '#007bff'; 
+            msg.innerText = 'Inasajili...';
 
             try {
-                const res = await fetch('apisignup', {
-                    method 'POST',
-                    headers { 'Content-Type' 'applicationjson' },
-                    body JSON.stringify({ phone, password })
+                const res = await fetch('/api/signup', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ phone, password })
                 });
                 const data = await res.json();
-                msg.style.color = data.success  'green'  'red';
+                msg.style.color = data.success ? 'green' : 'red';
                 msg.innerText = data.message;
                 if (data.success) {
-                    setTimeout(() = toggleForm('signin'), 2000);  Badilisha kwenda Sign In baada ya sekunde 2
+                    setTimeout(() => toggleForm('signin'), 2000); // Badilisha kwenda Sign In baada ya sekunde 2
                 }
             } catch (err) {
-                msg.style.color = 'red'; msg.innerText = 'Hitilafu ya mtandao.';
+                msg.style.color = 'red'; 
+                msg.innerText = 'Hitilafu ya mtandao.';
             }
         });
-    script
-body
-html
+    </script>
+</body>
+</html>
